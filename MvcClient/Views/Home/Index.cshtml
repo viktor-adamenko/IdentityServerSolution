@@ -1,0 +1,16 @@
+﻿<div class="container mt-5">
+    <h1 class="mb-3 mt-3 ">Home Page</h1>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            You are able to see user information
+        </p>
+    }
+    else
+    {
+        <p>
+            You need to login
+        </p>
+    }
+</div>

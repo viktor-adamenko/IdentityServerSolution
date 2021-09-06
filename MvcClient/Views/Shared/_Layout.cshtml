@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+    <nav class="py-2 bg-light border-bottom">
+        <div class="container d-flex flex-wrap">
+            <a class="navbar-brand link-dark" asp-controller="Home" asp-action="Index">Application</a>
+
+            <ul class="nav me-auto">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link px-2 link-dark" aria-current="page" asp-controller="Home" asp-action="UserInfo">User Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 link-dark" aria-current="page" asp-controller="PharmacyInfo" asp-action="Index">Pharmacy Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 link-danger" aria-current="page" asp-controller="PharmacyInfo" asp-action="AdminAccess">Admin Access</a>
+                    </li>
+                }
+
+            </ul>
+
+            <ul class="nav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger" asp-action="Logout" asp-controller="Home">Logout</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" asp-action="Login" asp-controller="Home">Login</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>
